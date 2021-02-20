@@ -1,0 +1,1 @@
+{"version":3,"file":"patientsController.js","sourceRoot":"","sources":["../../src/controllers/patientsController.ts"],"names":[],"mappings":";;AACA,0CAAoC;AAGpC,MAAM,kBAAkB;IAEb,KAAK,CAAE,GAAY,EAAC,GAAa;QACpC,kBAAO,EAAE,CAAC;QACV,GAAG,CAAC,IAAI,CAAC,EAAC,IAAI,EAAE,kBAAkB,EAAC,CAAC,CAAA;IACxC,CAAC;CACJ;AAED,MAAM,kBAAkB,GAAG,IAAI,kBAAkB,EAAE,CAAC;AACpD,kBAAe,kBAAkB,CAAC"}
