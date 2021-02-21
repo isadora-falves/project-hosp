@@ -9,9 +9,16 @@ class PatientsRoutes{
     }
 
     config(): void{
-        this.router.get('/', patientsController.index);
+        "/patientes"
+        this.router.get('/', patientsController.list);
+        this.router.get('/:id', patientsController.getOne);
+        this.router.post('/', patientsController.create);
+        this.router.delete('/:id', patientsController.delete);
+        this.router.put('/:id', patientsController.update);
+// falta o list
     }
 }
 
 const patientsRoutes = new PatientsRoutes();
 export default patientsRoutes.router;
+
