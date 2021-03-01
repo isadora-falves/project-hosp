@@ -1,1 +1,59 @@
-<p>patient-list works!</p>
+<div id="top" class="row">
+  <div class="col-md-3">
+      <h2>Pacientes</h2>
+  </div>
+
+  <div class="col-md-6">
+      <div class="input-group h2">
+      <input type="text" id="myInput" class="form-control" [formControl]="queryField" placeholder="Pesquisar Pacientes">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" (click)="pesquisar()">
+              Pesquisar
+            </button>
+          </span>
+      </div>
+  </div>
+</div> 
+<div id="list" class="row">
+  <div class="table-responsive col-md-12">
+      <table class="table table-striped" cellspacing="0" cellpadding="0">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Nome Paciente</th>
+                  <th>Cid</th>
+                  <th>N. Prontuário</th>
+                  <th class="actions">Ações</th>
+               </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let paciente of patients">
+                  <td>{{paciente.id}}</td>
+                  <td>{{paciente.nome}}</td>
+                  <td>{{paciente.cid_id}}</td>
+                  <td>{{paciente.numero_protuario}}</td>
+                  <td class="actions">
+                      <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
+                      <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
+                      <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+                      <a class="btn btn-print btn-xs" href="print.html">Imprimir</a>
+                  </td>
+              </tr>
+
+          </tbody>
+       </table>
+       <div id="bottom" class="row">
+         <div class="col-md-12">
+              
+             <ul class="pagination">
+                 <li class="disabled"><a>&lt; Anterior</a></li>
+                 <li class="disabled"><a>1</a></li>
+                 <li><a href="#">2</a></li>
+                 <li><a href="#">3</a></li>
+                 <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
+             </ul><!-- /.pagination -->
+       
+         </div>
+       </div> <!-- /#bottom -->
+   </div>
+</div> <!-- /#list -->

@@ -10,6 +10,8 @@ export class PatientFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("entrei na FORM");
+
   }
 
 }

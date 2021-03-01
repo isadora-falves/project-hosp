@@ -13,22 +13,24 @@ export class PatientsService {
   constructor(private http: HttpClient) { }
   
   getPatients() {
-    return this.http.get(`${this.API_URI}/`)
+    console.log('entrei no getPatients--->')
+    return this.http.get(`${this.API_URI}/pacientes/list`)
   }
 
   getPatient(id: string) {
-    return this.http.get(`${this.API_URI}/patientes/${id}`)
+    return this.http.get(`${this.API_URI}/pacientes/${id}`)
   }
 
   savePatients(patient: Patient){
-    return this.http.post(`${this.API_URI}/patientes`, patient)
+    console.log(patient)
+    return this.http.post(`${this.API_URI}/pacientes/create`, patient)
   }
 
   deletePatient(id:string){
-    return this.http.delete(`${this.API_URI}/patientes/${id}`)
+    return this.http.delete(`${this.API_URI}/pacientes/delete/${id}`)
   }
 
   updatePatient(id:string, updatePatient:Patient): Observable<any>{
-    return this.http.put(`${this.API_URI}/patientes/${id}`, updatePatient) 
+    return this.http.put(`${this.API_URI}/pacientes/${id}`, updatePatient) 
   }
 }

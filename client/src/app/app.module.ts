@@ -8,6 +8,8 @@ import { PatientFormComponent } from './components/patient-form/patient-form.com
 import { PatientListComponent } from './components/patient-list/patient-list.component';
 import { HttpClientModule } from '@angular/common/http'
 import { PatientsService } from './services/patients.service'
+import { ReactiveFormsModule } from '@angular/forms'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { PatientsService } from './services/patients.service'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule, 
+    ReactiveFormsModule
   ],
   providers: [
     PatientsService
