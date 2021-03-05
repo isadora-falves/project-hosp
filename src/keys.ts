@@ -1,9 +1,9 @@
 export default{
-
     database: {
-        host: 'localhost',
+        host: '127.0.0.1',
         user: 'root',
-        password: 'Hosp2005**',
-        database: 'ng_hosp_db'
+        password: '',
+        database: 'ng_hosp_db',
+        
     }
 }

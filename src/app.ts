@@ -24,7 +24,7 @@ class Server{
 
     routes(): void{
         this.app.use('/', indexRoutes);
-        this.app.use('/patientes', patientRoutes);
+        this.app.use('/pacientes', patientRoutes);
     }
 
     start(): void{

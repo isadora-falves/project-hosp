@@ -9,13 +9,13 @@ class PatientsRoutes{
     }
 
     config(): void{
-        "/patientes"
-        this.router.get('/', patientsController.list);
-        this.router.get('/:id', patientsController.getOne);
-        this.router.post('/', patientsController.create);
-        this.router.delete('/:id', patientsController.delete);
-        this.router.put('/:id', patientsController.update);
-// falta o list
+        console.log('aqui patientsRoutes')  
+        console.log(this.router)
+        this.router.get('/list', patientsController.list);
+        this.router.get('/list/:id', patientsController.getOne);
+        this.router.post('/create', patientsController.create);
+        this.router.delete('/delete/:id', patientsController.delete);
+        this.router.put('/edit/:id', patientsController.update);
     }
 }
 

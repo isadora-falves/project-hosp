@@ -1,20 +1,21 @@
 import {Request, Response} from 'express';
 import pool from '../database';
-
 class PatientsController{
 
     public index (req: Request,res: Response) {
         res.json({text: 'patients'})
+        console.log('auqi?  ')
     }
 
     public async list(req: Request,res: Response){
+        console.log('entrei aqui?1')
         const all_patients = await pool.query('SELECT * FROM paciente')
         res.json(all_patients)
     }
     
     public async getOne(req: Request,res: Response):Promise<any>{
         const { id } =  req.params
-        const patient = await pool.query('SELECT * FROM cid WHERE id = ?', [id]) 
+        const patient = await pool.query('SELECT * FROM paciente WHERE id = ?', [id]) 
         if (patient.length > 0){
             return res.json(patient)
         }else{
@@ -23,7 +24,8 @@ class PatientsController{
     }
 
     public async create(req: Request,res: Response):Promise<void>{
-        await pool.query('INSERT INTO cid set ?', [req.body])
+        console.log('entrei no create?');
+        await pool.query('INSERT INTO paciente set ?', [req.body])
         res.json({message: 'Patient Saved'})
     }
 
@@ -35,7 +37,7 @@ class PatientsController{
 
     public async update(req: Request,res: Response):Promise<void>{
         const { id } =  req.params
-        await pool.query('UPDATE cid set ? WHERE id = ?',[req.body, id])
+        await pool.query('UPDATE paciente set ? WHERE id = ?',[req.body, id])
         res.json({message: 'O paciente foi atualizado'})
     }
 }
