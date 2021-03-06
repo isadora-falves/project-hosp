@@ -11,12 +11,12 @@ class PatientsRoutes {
         this.config();
     }
     config() {
-        "/patientes";
-        this.router.get('/', patientsController_1.default.list);
-        this.router.get('/:id', patientsController_1.default.getOne);
-        this.router.post('/', patientsController_1.default.create);
-        this.router.delete('/:id', patientsController_1.default.delete);
-        this.router.put('/:id', patientsController_1.default.update);
+        "/patients";
+        this.router.get('/list', patientsController_1.default.list);
+        this.router.get('/list/:id', patientsController_1.default.getOne);
+        this.router.post('/create', patientsController_1.default.create);
+        this.router.delete('/delete/:id', patientsController_1.default.delete);
+        this.router.put('edit/:id', patientsController_1.default.update);
         // falta o list
     }
 }

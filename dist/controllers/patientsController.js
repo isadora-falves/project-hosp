@@ -17,8 +17,10 @@ class PatientsController {
         res.json({ text: 'patients' });
     }
     list(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const all_patients = yield database_1.default.query('SELECT * FROM paciente');
+      console.log('entrei aqui?3')
+
+      return __awaiter(this, void 0, void 0, function* () {
+        const all_patients = yield database_1.default.query('SELECT * FROM paciente');
             res.json(all_patients);
         });
     }
@@ -36,7 +38,7 @@ class PatientsController {
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO cid set ?', [req.body]);
+            yield database_1.default.query('INSERT INTO paciente set ?', [req.body]);
             res.json({ message: 'Patient Saved' });
         });
     }
@@ -50,7 +52,7 @@ class PatientsController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE cid set ? WHERE id = ?', [req.body, id]);
+            yield database_1.default.query('UPDATE paciente set ? WHERE id = ?', [req.body, id]);
             res.json({ message: 'O paciente foi atualizado' });
         });
     }

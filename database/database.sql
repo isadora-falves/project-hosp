@@ -2,27 +2,31 @@ CREATE DATABASE ng_hosp_db;
 
 USE ng_hosp_db;
 
-CREATE TABLE cid(
-    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    codigo VARCHAR(255) NOT NULL,
-    descricao VARCHAR(255) NOT NULL,
-    descricao_abreviada VARCHAR(60)
-);
+DROP TABLE IF EXISTS `paciente`;
+DROP TABLE IF EXISTS `cid`;
 
-CREATE TABLE paciente(
-    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    cid_id INT,
-    FOREIGN KEY(cid_id) REFERENCES cid(id),
-    nome_mae VARCHAR(255),
-    nr_sus INT,
-    n_prontuario_same INT,
-    n_prontuario_hygia INT,
-    sexo CHAR,
-    data_nascimento TIMESTAMP,
-    data_diagnostico TIMESTAMP,
-    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+CREATE TABLE `cid` (
+    `id` int NOT NULL AUTO_INCREMENT,
+    `codigo` varchar(255) NOT NULL,
+    `descricao` varchar(255) NOT NULL,
+    `descricao_abreviada` varchar(60) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  ) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  
+CREATE TABLE `paciente` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
+  `cid_id` int DEFAULT NULL,
+  `numero_prontuario_same` int DEFAULT NULL,
+  `numero_prontuario_hygia` int DEFAULT NULL,
+  `nome_mae` varchar(255) DEFAULT NULL,
+  `sexo` char(1) DEFAULT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `data_diagnostico` date DEFAULT NULL,
+  `criado_em` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `NR_SUS` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cid_id` (`cid_id`),
+  CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`cid_id`) REFERENCES `cid` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=322287 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-DESCRIBE cid;
-DESCRIBE paciente;
