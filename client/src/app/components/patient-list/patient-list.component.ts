@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { PatientsService } from '../../services/patients.service'
-import { NgxQRCodeModule } from 'ngx-qrcode2';
-
+import { PatientsService } from '../../services/patients.service';
 @Component({
   selector: 'app-patient-list',
   templateUrl: './patient-list.component.html',
@@ -13,18 +11,15 @@ export class PatientListComponent implements OnInit {
 
   patients:any = [];
   queryField =  new FormControl();
-
-  teste = 
-    {
-      "nome": "Isadora Alves",
-      "cid_id": 1,
-      "numero_protuario": 1 ,
-      "nome_mae": "Luciene Moreira",
-      "sexo": "f"
-  }
-
-  constructor(private patientsService: PatientsService) { }
-
+  patient_show:any = [];
+  // qrdata!: string;
+  
+  
+  constructor(private patientsService: PatientsService) { 
+    // this.qrdata = this.patient_show;
+    // console.log(this.qrdata)
+    }
+  
   ngOnInit(): void {
     console.log('entrei no')
     
@@ -35,10 +30,13 @@ export class PatientListComponent implements OnInit {
         console.log(this.patients)
       },
       err => console.log(err)
-    );}
-
-    
-  
+      );}
+      
+  // open(content:any, paciente:any) {
+  //   this.modalService.open(content);
+  //   this.patient_show = paciente;
+  //   this.qrdata = paciente.id.toString();
+  // }
   
   pesquisar(): void{
     console.log(this.queryField.value)

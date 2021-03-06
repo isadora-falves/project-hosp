@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Patient } from '../models/Patient'
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,8 @@ export class PatientsService {
     return this.http.delete(`${this.API_URI}/pacientes/delete/${id}`)
   }
 
-  updatePatient(id:string, updatePatient:Patient): Observable<any>{
-    return this.http.put(`${this.API_URI}/pacientes/${id}`, updatePatient) 
-  }
+  // updatePatient(id:string, updatePatient:Patient):<any>{
+  //   // updatePatient(id:string, updatePatient:Patient): Observable<any>{
+  //   return this.http.put(`${this.API_URI}/pacientes/${id}`, updatePatient) 
+  // }
 }

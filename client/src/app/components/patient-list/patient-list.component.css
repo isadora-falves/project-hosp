@@ -3,3 +3,9 @@
   background-color: rgb(61, 140, 182);
   border-color: rgb(61, 140, 182)
 }
+
+.btn-xs{
+  padding: 0.50rem 0.5rem;
+  line-height: 0.5rem;
+  font-weight: 400;
+}

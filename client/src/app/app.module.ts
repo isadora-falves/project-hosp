@@ -10,12 +10,13 @@ import { HttpClientModule } from '@angular/common/http'
 import { PatientsService } from './services/patients.service'
 import { ReactiveFormsModule } from '@angular/forms'; 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     PatientFormComponent,
-    PatientListComponent
+    PatientListComponent,
   ],
   imports: [
     BrowserModule,
