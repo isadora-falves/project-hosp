@@ -1,86 +1,105 @@
 <div id="top" class="row">
   <div class="col-md-3">
-      <h2>Pacientes</h2>
+    <h2>Pacientes</h2>
   </div>
 
   <div class="col-md-6">
-      <div class="input-group h2">
+    <div class="input-group h2">
       <input type="text" id="myInput" class="form-control" [formControl]="queryField" placeholder="Pesquisar Pacientes">
-          <span class="input-group-btn">
-            <button class="btn btn-primary" (click)="pesquisar()">
-              Pesquisar
-            </button>
-          </span>
-      </div>
+      <span class="input-group-btn">
+        <button class="btn btn-primary" (click)="pesquisar()">
+          Pesquisar
+        </button>
+      </span>
+    </div>
   </div>
-</div> 
+</div>
 <div id="list" class="row">
   <div class="table-responsive col-md-12">
-      <table class="table table-striped" cellspacing="0" cellpadding="0">
-          <thead>
-              <tr>
-                  <th>ID</th>
-                  <th>Paciente</th>
-                  <th>Cid</th>
-                  <th>N. same</th>
-                  <th>N. hygia</th>
-                  <th class="actions">Ações</th>
-               </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let paciente of patients">
-                  <td>{{paciente.id}}</td>
-                  <td>{{paciente.nome}}</td>
-                  <td>{{paciente.cid_id}}</td>
-                  <td>{{paciente.numero_prontuario_same}}</td>
-                  <td>{{paciente.numero_prontuario_hygia}}</td>
-                  <td class="actions">
-                      <a class="btn btn-success btn-xs" style="width:10;height:10" href="view.html">Ver</a>
-                      <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-                      <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-                      <a class="btn btn-print btn-xs" >Imprimir</a>
-                  </td>
-              </tr>
+    <table class="table table-striped" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Paciente</th>
+          <th>Cid</th>
+          <th>N. same</th>
+          <th>N. hygia</th>
+          <th class="actions">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paciente of patients">
+          <td>{{paciente.id}}</td>
+          <td>{{paciente.nome}}</td>
+          <td>{{paciente.cid_id}}</td>
+          <td>{{paciente.numero_prontuario_same}}</td>
+          <td>{{paciente.numero_prontuario_hygia}}</td>
+          <td class="actions">
+            <a class="btn btn-success btn-xs" style="width:10;height:10" href="view.html">Ver</a>
+            <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
+            <a class="btn btn-danger btn-xs" href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+            <a class="btn btn-print btn-xs" (click)="open(content, paciente)">Imprimir</a>
+          </td>
+        </tr>
 
-          </tbody>
-       </table>
-       <div id="bottom" class="row" #modalImprimir>
-         <div class="col-md-12">
-              
-             <ul class="pagination">
-                 <li class="disabled"><a>&lt; Anterior</a></li>
-                 <li class="disabled"><a>1</a></li>
-                 <li><a href="#">2</a></li>
-                 <li><a href="#">3</a></li>
-                 <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
-             </ul>
-       
-         </div>
-       </div> 
-   </div>
-</div>
+      </tbody>
+    </table>
+    <div id="bottom" class="row" #modalImprimir>
+      <div class="col-md-12">
 
-<ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Paciente<span style="color:blue"> {{patient_show.nome}}</span> </h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+        <ul class="pagination">
+          <li class="disabled"><a>&lt; Anterior</a></li>
+          <li class="disabled"><a>1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
+        </ul>
+
+      </div>
+    </div>
   </div>
-  <div class="modal-body col-sm-9">
-      <div> Identificador: <span>{{patient_show.id}}</span></div>
-      <div> Nome: <span>{{patient_show.nome}}</span></div>
-      <div> CID: <span>{{patient_show.cid_id}}</span></div>
-      <div> Nr. SUS: <span>{{patient_show.NR_SUS}}</span></div>
-      <div> Nr. Prontuario SAME: <span>{{patient_show.numero_prontuario_same}}</span></div>
-      <div> Nr. Prontuario HYGIA: <span>{{patient_show.numero_prontuario_hygia}}</span></div>
-      <div> Sexo: <span>{{patient_show.sexo}}</span></div>
-      <div> Dt. Nascimento: <span>{{patient_show.data_nascimento}}</span></div>    
-      <div> Dt. Diagnóstico: <span>{{patient_show.data_diagnostico}}</span></div>
-      <!-- <qrcode [qrdata]="qrdata" [size]="256" [level]="'M'"></qrcode> -->
+</div>
+<ng-template #content let-c="close" let-d="dismiss" >
+  <div id="printThis">
+
+
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Paciente<span style="color:blue"> {{patient_show.nome}}</span> </h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" style="text-align: center">
+      <div><u>identificador:</u><span> {{patient_show.id}}</span></div>
+      <div><u>Nome:</u><span> {{patient_show.nome}}</span></div>
+      <div><u>Cid:</u><span> {{patient_show.cid_id}}</span></div>
+      <div> <u>Nr. SUS:</u><span> {{patient_show.NR_SUS}}</span></div>
+      <div><u>Nr. Prontuario Same:</u><span> {{patient_show.numero_prontuario_same}}</span></div>
+      <div><u> Nr. Prontuario HYGIA:</u> <span> {{patient_show.numero_prontuario_hygia}}</span></div>
+      <div><u>Sexo:</u><span> {{patient_show.sexo}}</span></div>
+      <div> <u>Dt. Nascimento:</u><span> {{patient_show.data_nascimento}}</span></div>
+      <div><u>Dt. Diagnóstico:</u><span> {{patient_show.data_diagnostico}}</span></div>
+      <qrcode [qrdata]="qrdata" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+    </div>
+  
+    <div class="modal-footer">
+     <button id="btnPrint" type="button" class="btn btn-default">Print</button>
     </div>
 
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+
   </div>
 </ng-template>
+
+<script>
+  $("#btnPrint").click = function () {
+    console.log('aqui????????');
+    printElement(document.getElementById("printThis"));
+}
+
+function printElement(elem) {
+    var domClone = elem.cloneNode(true);
+  
+    window.print();
+}
+</script>
+

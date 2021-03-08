@@ -8,9 +8,9 @@ import { PatientFormComponent } from './components/patient-form/patient-form.com
 import { PatientListComponent } from './components/patient-list/patient-list.component';
 import { HttpClientModule } from '@angular/common/http'
 import { PatientsService } from './services/patients.service'
-import { ReactiveFormsModule } from '@angular/forms'; 
-
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { QRCodeModule } from 'angularx-qrcode';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QRCodeModule,
+    NgbModule
   ],
   providers: [
     PatientsService
